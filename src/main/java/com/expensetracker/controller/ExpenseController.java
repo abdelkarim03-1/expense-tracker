@@ -75,5 +75,10 @@ public class ExpenseController {
         return expenseService.getMonthlySummary(month, year);
     }
 
+    @GetMapping
+    @PreAuthorize("hasAuthority('USER')")
+    public List<Expense> getAllExpenses() {
+        return expenseService.getAllExpenses();
+    }
 
 }
