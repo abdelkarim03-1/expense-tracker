@@ -3,8 +3,12 @@ package com.expensetracker.service;
 import com.expensetracker.model.Expense;
 import com.expensetracker.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,7 +61,7 @@ public class ExpenseService {
     }
 
     public Page<Expense> getAllExpenses(Pageable pageable) {
-        return expenseRepository.findAll(pageable);
+        return (Page<Expense>) expenseRepository.findAll(pageable);
     }
 
     public BigDecimal getMonthlySummary(int month, int year) {
